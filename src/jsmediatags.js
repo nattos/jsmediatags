@@ -271,15 +271,15 @@ Config
   .addTagReader(MP4TagReader)
   .addTagReader(FLACTagReader);
 
-if (typeof process !== "undefined" && !process.browser) {
-  if (typeof navigator !== "undefined" && navigator.product === "ReactNative") {
-    const ReactNativeFileReader = require('./ReactNativeFileReader');
-    Config.addFileReader(ReactNativeFileReader);
-  } else {
+// if (typeof process !== "undefined" && !process.browser) {
+//   if (typeof navigator !== "undefined" && navigator.product === "ReactNative") {
+//     const ReactNativeFileReader = require('./ReactNativeFileReader');
+//     Config.addFileReader(ReactNativeFileReader);
+//   } else {
     const NodeFileReader = require('./NodeFileReader');
     Config.addFileReader(NodeFileReader);
-  }
-}
+//   }
+// }
 
 module.exports = {
   "read": read,
