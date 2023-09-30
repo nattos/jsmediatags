@@ -6,54 +6,35 @@ module.exports = XMLHttpRequest;
 },{}],3:[function(require,module,exports){
 'use strict';
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 var MediaFileReader = require('./MediaFileReader');
-
 var ArrayFileReader = /*#__PURE__*/function (_MediaFileReader) {
   _inherits(ArrayFileReader, _MediaFileReader);
-
   var _super = _createSuper(ArrayFileReader);
-
   function ArrayFileReader(array) {
     var _this;
-
     _classCallCheck(this, ArrayFileReader);
-
     _this = _super.call(this);
-
     _defineProperty(_assertThisInitialized(_this), "_array", void 0);
-
     _defineProperty(_assertThisInitialized(_this), "_size", void 0);
-
     _this._array = array;
     _this._size = array.length;
     _this._isInitialized = true;
     return _this;
   }
-
   _createClass(ArrayFileReader, [{
     key: "init",
     value: function init(callbacks) {
@@ -70,7 +51,6 @@ var ArrayFileReader = /*#__PURE__*/function (_MediaFileReader) {
       if (offset >= this._array.length) {
         throw new Error("Offset " + offset + " hasn't been loaded yet.");
       }
-
       return this._array[offset];
     }
   }], [{
@@ -79,64 +59,42 @@ var ArrayFileReader = /*#__PURE__*/function (_MediaFileReader) {
       return Array.isArray(file) || typeof Buffer === 'function' && Buffer.isBuffer(file);
     }
   }]);
-
   return ArrayFileReader;
 }(MediaFileReader);
-
 module.exports = ArrayFileReader;
 
 },{"./MediaFileReader":11}],4:[function(require,module,exports){
 'use strict';
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 var ChunkedFileData = require('./ChunkedFileData');
-
 var MediaFileReader = require('./MediaFileReader');
-
 var BlobFileReader = /*#__PURE__*/function (_MediaFileReader) {
   _inherits(BlobFileReader, _MediaFileReader);
-
   var _super = _createSuper(BlobFileReader);
-
   function BlobFileReader(blob) {
     var _this;
-
     _classCallCheck(this, BlobFileReader);
-
     _this = _super.call(this);
-
     _defineProperty(_assertThisInitialized(_this), "_blob", void 0);
-
     _defineProperty(_assertThisInitialized(_this), "_fileData", void 0);
-
     _this._blob = blob;
     _this._fileData = new ChunkedFileData();
     return _this;
   }
-
   _createClass(BlobFileReader, [{
     key: "_init",
     value: function _init(callbacks) {
@@ -146,20 +104,16 @@ var BlobFileReader = /*#__PURE__*/function (_MediaFileReader) {
   }, {
     key: "loadRange",
     value: function loadRange(range, callbacks) {
-      var self = this; // $FlowIssue - flow isn't aware of mozSlice or webkitSlice
-
+      var self = this;
+      // $FlowIssue - flow isn't aware of mozSlice or webkitSlice
       var blobSlice = this._blob.slice || this._blob.mozSlice || this._blob.webkitSlice;
       var blob = blobSlice.call(this._blob, range[0], range[1] + 1);
       var browserFileReader = new FileReader();
-
       browserFileReader.onloadend = function (event) {
         var intArray = new Uint8Array(browserFileReader.result);
-
         self._fileData.addData(range[0], intArray);
-
         callbacks.onSuccess();
       };
-
       browserFileReader.onerror = browserFileReader.onabort = function (event) {
         if (callbacks.onError) {
           callbacks.onError({
@@ -168,7 +122,6 @@ var BlobFileReader = /*#__PURE__*/function (_MediaFileReader) {
           });
         }
       };
-
       browserFileReader.readAsArrayBuffer(blob);
     }
   }, {
@@ -179,15 +132,14 @@ var BlobFileReader = /*#__PURE__*/function (_MediaFileReader) {
   }], [{
     key: "canReadFile",
     value: function canReadFile(file) {
-      return typeof Blob !== "undefined" && file instanceof Blob || // File extends Blob but it seems that File instanceof Blob doesn't
+      return typeof Blob !== "undefined" && file instanceof Blob ||
+      // File extends Blob but it seems that File instanceof Blob doesn't
       // quite work as expected in Cordova/PhoneGap.
       typeof File !== "undefined" && file instanceof File;
     }
   }]);
-
   return BlobFileReader;
 }(MediaFileReader);
-
 module.exports = BlobFileReader;
 
 },{"./ChunkedFileData":5,"./MediaFileReader":11}],5:[function(require,module,exports){
@@ -204,36 +156,29 @@ module.exports = BlobFileReader;
  */
 'use strict';
 
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 var NOT_FOUND = -1;
-
 var ChunkedFileData = /*#__PURE__*/function () {
   function ChunkedFileData() {
     _classCallCheck(this, ChunkedFileData);
-
     _defineProperty(this, "_fileData", void 0);
-
     this._fileData = [];
   }
+
   /**
    * Adds data to the file storage at a specific offset.
    */
-
-
   _createClass(ChunkedFileData, [{
     key: "addData",
     value: function addData(offset, data) {
       var offsetEnd = offset + data.length - 1;
-
       var chunkRange = this._getChunkRange(offset, offsetEnd);
-
       if (chunkRange.startIx === NOT_FOUND) {
         this._fileData.splice(chunkRange.insertIx || 0, 0, {
           offset: offset,
@@ -251,20 +196,15 @@ var ChunkedFileData = /*#__PURE__*/function () {
           offset: Math.min(offset, firstChunk.offset),
           data: data
         };
-
         if (needsPrepend) {
           var slicedData = this._sliceData(firstChunk.data, 0, offset - firstChunk.offset);
-
           chunk.data = this._concatData(slicedData, data);
         }
-
         if (needsAppend) {
           // Use the lastChunk because the slice logic is easier to handle.
           var slicedData = this._sliceData(chunk.data, 0, lastChunk.offset - chunk.offset);
-
           chunk.data = this._concatData(slicedData, lastChunk.data);
         }
-
         this._fileData.splice(chunkRange.startIx, chunkRange.endIx - chunkRange.startIx + 1, chunk);
       }
     }
@@ -274,10 +214,10 @@ var ChunkedFileData = /*#__PURE__*/function () {
       // TypedArrays don't support concat.
       if (typeof ArrayBuffer !== "undefined" && ArrayBuffer.isView && ArrayBuffer.isView(dataA)) {
         // $FlowIssue - flow thinks dataAandB is a string but it's not
-        var dataAandB = new dataA.constructor(dataA.length + dataB.length); // $FlowIssue - flow thinks dataAandB is a string but it's not
-
-        dataAandB.set(dataA, 0); // $FlowIssue - flow thinks dataAandB is a string but it's not
-
+        var dataAandB = new dataA.constructor(dataA.length + dataB.length);
+        // $FlowIssue - flow thinks dataAandB is a string but it's not
+        dataAandB.set(dataA, 0);
+        // $FlowIssue - flow thinks dataAandB is a string but it's not
         dataAandB.set(dataB, dataA.length);
         return dataAandB;
       } else {
@@ -296,6 +236,7 @@ var ChunkedFileData = /*#__PURE__*/function () {
         return data.subarray(begin, end);
       }
     }
+
     /**
      * Finds the chunk range that overlaps the [offsetStart-1,offsetEnd+1] range.
      * When a chunk is adjacent to the offset we still consider it part of the
@@ -304,60 +245,54 @@ var ChunkedFileData = /*#__PURE__*/function () {
      * should be inserted in the data list (startIx == NOT_FOUND and endIX ==
      * NOT_FOUND).
      */
-
   }, {
     key: "_getChunkRange",
     value: function _getChunkRange(offsetStart, offsetEnd) {
       var startChunkIx = NOT_FOUND;
       var endChunkIx = NOT_FOUND;
-      var insertIx = 0; // Could use binary search but not expecting that many blocks to exist.
+      var insertIx = 0;
 
+      // Could use binary search but not expecting that many blocks to exist.
       for (var i = 0; i < this._fileData.length; i++, insertIx = i) {
         var chunkOffsetStart = this._fileData[i].offset;
         var chunkOffsetEnd = chunkOffsetStart + this._fileData[i].data.length;
-
         if (offsetEnd < chunkOffsetStart - 1) {
           // This offset range doesn't overlap with any chunks.
           break;
-        } // If it is adjacent we still consider it part of the range because
+        }
+        // If it is adjacent we still consider it part of the range because
         // we're going end up with a single block with all contiguous data.
-
-
         if (offsetStart <= chunkOffsetEnd + 1 && offsetEnd >= chunkOffsetStart - 1) {
           startChunkIx = i;
           break;
         }
-      } // No starting chunk was found, meaning that the offset is either before
+      }
+
+      // No starting chunk was found, meaning that the offset is either before
       // or after the current stored chunks.
-
-
       if (startChunkIx === NOT_FOUND) {
         return {
           startIx: NOT_FOUND,
           endIx: NOT_FOUND,
           insertIx: insertIx
         };
-      } // Find the ending chunk.
+      }
 
-
+      // Find the ending chunk.
       for (var i = startChunkIx; i < this._fileData.length; i++) {
         var chunkOffsetStart = this._fileData[i].offset;
         var chunkOffsetEnd = chunkOffsetStart + this._fileData[i].data.length;
-
         if (offsetEnd >= chunkOffsetStart - 1) {
           // Candidate for the end chunk, it doesn't mean it is yet.
           endChunkIx = i;
         }
-
         if (offsetEnd <= chunkOffsetEnd + 1) {
           break;
         }
       }
-
       if (endChunkIx === NOT_FOUND) {
         endChunkIx = startChunkIx;
       }
-
       return {
         startIx: startChunkIx,
         endIx: endChunkIx
@@ -368,86 +303,68 @@ var ChunkedFileData = /*#__PURE__*/function () {
     value: function hasDataRange(offsetStart, offsetEnd) {
       for (var i = 0; i < this._fileData.length; i++) {
         var chunk = this._fileData[i];
-
         if (offsetEnd < chunk.offset) {
           return false;
         }
-
         if (offsetStart >= chunk.offset && offsetEnd < chunk.offset + chunk.data.length) {
           return true;
         }
       }
-
       return false;
     }
   }, {
     key: "getByteAt",
     value: function getByteAt(offset) {
       var dataChunk;
-
       for (var i = 0; i < this._fileData.length; i++) {
         var dataChunkStart = this._fileData[i].offset;
         var dataChunkEnd = dataChunkStart + this._fileData[i].data.length - 1;
-
         if (offset >= dataChunkStart && offset <= dataChunkEnd) {
           dataChunk = this._fileData[i];
           break;
         }
       }
-
       if (dataChunk) {
         return dataChunk.data[offset - dataChunk.offset];
       }
-
       throw new Error("Offset " + offset + " hasn't been loaded yet.");
     }
   }], [{
     key: "NOT_FOUND",
-    get: // $FlowIssue - get/set properties not yet supported
+    get:
+    // $FlowIssue - get/set properties not yet supported
     function get() {
       return NOT_FOUND;
     }
   }]);
-
   return ChunkedFileData;
 }();
-
 module.exports = ChunkedFileData;
 
 },{}],6:[function(require,module,exports){
 "use strict";
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 var MediaTagReader = require('./MediaTagReader');
+
 /* The first 4 bytes of a FLAC file describes the header for the file. If these
  * bytes respectively read "fLaC", we can determine it is a FLAC file.
  */
-
-
 var FLAC_HEADER_SIZE = 4;
+
 /* FLAC metadata is stored in blocks containing data ranging from STREAMINFO to
  * VORBIS_COMMENT, which is what we want to work with.
  *
@@ -466,38 +383,28 @@ var FLAC_HEADER_SIZE = 4;
  * All values for METADATA_BLOCK_HEADER can be found here.
  * https://xiph.org/flac/format.html#metadata_block_header
  */
-
 var COMMENT_HEADERS = [4, 132];
-var PICTURE_HEADERS = [6, 134]; // These are the possible image types as defined by the FLAC specification.
+var PICTURE_HEADERS = [6, 134];
 
+// These are the possible image types as defined by the FLAC specification.
 var IMAGE_TYPES = ["Other", "32x32 pixels 'file icon' (PNG only)", "Other file icon", "Cover (front)", "Cover (back)", "Leaflet page", "Media (e.g. label side of CD)", "Lead artist/lead performer/soloist", "Artist/performer", "Conductor", "Band/Orchestra", "Composer", "Lyricist/text writer", "Recording Location", "During recording", "During performance", "Movie/video screen capture", "A bright coloured fish", "Illustration", "Band/artist logotype", "Publisher/Studio logotype"];
-
 /**
  * Class representing a MediaTagReader that parses FLAC tags.
  */
 var FLACTagReader = /*#__PURE__*/function (_MediaTagReader) {
   _inherits(FLACTagReader, _MediaTagReader);
-
   var _super = _createSuper(FLACTagReader);
-
   function FLACTagReader() {
     var _this;
-
     _classCallCheck(this, FLACTagReader);
-
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
-
     _this = _super.call.apply(_super, [this].concat(args));
-
     _defineProperty(_assertThisInitialized(_this), "_commentOffset", void 0);
-
     _defineProperty(_assertThisInitialized(_this), "_pictureOffset", void 0);
-
     return _this;
   }
-
   _createClass(FLACTagReader, [{
     key: "_loadData",
     value:
@@ -520,6 +427,7 @@ var FLACTagReader = /*#__PURE__*/function (_MediaTagReader) {
         }
       });
     }
+
     /**
      * Special internal function used to parse the different FLAC blocks.
      *
@@ -540,7 +448,6 @@ var FLACTagReader = /*#__PURE__*/function (_MediaTagReader) {
      * @param {number} offset - The offset to start checking the header from.
      * @param {LoadCallbackType} callbacks - The callback to call once the header has been found.
      */
-
   }, {
     key: "_loadBlock",
     value: function _loadBlock(mediaFileReader, offset, callbacks) {
@@ -548,13 +455,11 @@ var FLACTagReader = /*#__PURE__*/function (_MediaTagReader) {
       /* As mentioned above, this first byte is loaded to see what metadata type
        * this block represents.
        */
-
       var blockHeader = mediaFileReader.getByteAt(offset);
       /* The last three bytes (integer 24) contain a value representing the length
        * of the following metadata block. The 1 is added in order to shift the offset
        * by one to get the last three bytes in the block header.
        */
-
       var blockSize = mediaFileReader.getInteger24At(offset + 1, true);
       /* This conditional checks if blockHeader (the byte retrieved representing the
        * type of the header) is one the headers we are looking for.
@@ -567,7 +472,6 @@ var FLACTagReader = /*#__PURE__*/function (_MediaTagReader) {
        * the exception of adding another 4 bytes to move it to the end of the new metadata
        * header.
        */
-
       if (COMMENT_HEADERS.indexOf(blockHeader) !== -1) {
         /* 4 is added to offset to move it to the head of the actual metadata.
          * The range starting from offsetMatadata (the beginning of the block)
@@ -577,7 +481,6 @@ var FLACTagReader = /*#__PURE__*/function (_MediaTagReader) {
         mediaFileReader.loadRange([offsetMetadata, offsetMetadata + blockSize], {
           onSuccess: function onSuccess() {
             self._commentOffset = offsetMetadata;
-
             self._nextBlock(mediaFileReader, offset, blockHeader, blockSize, callbacks);
           }
         });
@@ -586,7 +489,6 @@ var FLACTagReader = /*#__PURE__*/function (_MediaTagReader) {
         mediaFileReader.loadRange([offsetMetadata, offsetMetadata + blockSize], {
           onSuccess: function onSuccess() {
             self._pictureOffset = offsetMetadata;
-
             self._nextBlock(mediaFileReader, offset, blockHeader, blockSize, callbacks);
           }
         });
@@ -594,6 +496,7 @@ var FLACTagReader = /*#__PURE__*/function (_MediaTagReader) {
         self._nextBlock(mediaFileReader, offset, blockHeader, blockSize, callbacks);
       }
     }
+
     /**
      * Internal function used to load the next range and respective block.
      *
@@ -610,12 +513,10 @@ var FLACTagReader = /*#__PURE__*/function (_MediaTagReader) {
      * @param {number} blockSize - The size of the previously processed header.
      * @param {LoadCallbackType} callbacks - The callback functions to be called.
      */
-
   }, {
     key: "_nextBlock",
     value: function _nextBlock(mediaFileReader, offset, blockHeader, blockSize, callbacks) {
       var self = this;
-
       if (blockHeader > 127) {
         if (!self._commentOffset) {
           callbacks.onError({
@@ -633,6 +534,7 @@ var FLACTagReader = /*#__PURE__*/function (_MediaTagReader) {
         });
       }
     }
+
     /**
      * Parses the data and returns the tags.
      *
@@ -653,7 +555,6 @@ var FLACTagReader = /*#__PURE__*/function (_MediaTagReader) {
      * @param {Array<string>} [tags] - Optional tags to also be retrieved from the file.
      * @return {TagType} - An object containing the tag information for the file.
      */
-
   }, {
     key: "_parseData",
     value: function _parseData(data, tags) {
@@ -664,7 +565,6 @@ var FLACTagReader = /*#__PURE__*/function (_MediaTagReader) {
        * and is therefore commented out.
        */
       // var vendor = data.getStringWithCharsetAt(offsetVendor, vendorLength, "utf-8").toString();
-
       var offsetList = vendorLength + offsetVendor;
       /* To get the metadata from the block, we first get the long that contains the
        * number of actual comment values that are existent within the block.
@@ -677,50 +577,40 @@ var FLACTagReader = /*#__PURE__*/function (_MediaTagReader) {
        * Additions of 4 here are used to move the offset past the first 4 bytes which only contain
        * the length of the comment.
        */
-
       var numComments = data.getLongAt(offsetList, false);
       var dataOffset = offsetList + 4;
       var title, artist, album, track, genre, picture;
-
       for (var i = 0; i < numComments; i++) {
         var _dataLength = data.getLongAt(dataOffset, false);
-
         var s = data.getStringWithCharsetAt(dataOffset + 4, _dataLength, "utf-8").toString();
         var d = s.indexOf("=");
         var split = [s.slice(0, d), s.slice(d + 1)];
-
         switch (split[0].toUpperCase()) {
           case "TITLE":
             title = split[1];
             break;
-
           case "ARTIST":
             artist = split[1];
             break;
-
           case "ALBUM":
             album = split[1];
             break;
-
           case "TRACKNUMBER":
             track = split[1];
             break;
-
           case "GENRE":
             genre = split[1];
             break;
         }
-
         dataOffset += 4 + _dataLength;
       }
+
       /* If a picture offset was found and assigned, then the reader will start processing
        * the picture block from that point.
        *
        * All the lengths for the picture data can be found online here:
        * https://xiph.org/flac/format.html#metadata_block_picture
        */
-
-
       if (this._pictureOffset) {
         var imageType = data.getLongAt(this._pictureOffset, true);
         var offsetMimeLength = this._pictureOffset + 4;
@@ -742,7 +632,6 @@ var FLACTagReader = /*#__PURE__*/function (_MediaTagReader) {
           data: imageData
         };
       }
-
       var tag = {
         type: "FLAC",
         version: "1",
@@ -775,6 +664,7 @@ var FLACTagReader = /*#__PURE__*/function (_MediaTagReader) {
         length: FLAC_HEADER_SIZE
       };
     }
+
     /**
      * Determines whether or not this reader can read a certain tag format.
      *
@@ -784,7 +674,6 @@ var FLACTagReader = /*#__PURE__*/function (_MediaTagReader) {
      *
      * @return {boolean} True if the header is fLaC, false otherwise.
      */
-
   }, {
     key: "canReadTagFormat",
     value: function canReadTagFormat(tagIdentifier) {
@@ -792,52 +681,35 @@ var FLACTagReader = /*#__PURE__*/function (_MediaTagReader) {
       return id === 'fLaC';
     }
   }]);
-
   return FLACTagReader;
 }(MediaTagReader);
-
 module.exports = FLACTagReader;
 
 },{"./MediaTagReader":12}],7:[function(require,module,exports){
 'use strict';
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 var MediaTagReader = require('./MediaTagReader');
-
 var MediaFileReader = require('./MediaFileReader');
-
 var ID3v1TagReader = /*#__PURE__*/function (_MediaTagReader) {
   _inherits(ID3v1TagReader, _MediaTagReader);
-
   var _super = _createSuper(ID3v1TagReader);
-
   function ID3v1TagReader() {
     _classCallCheck(this, ID3v1TagReader);
-
     return _super.apply(this, arguments);
   }
-
   _createClass(ID3v1TagReader, [{
     key: "_loadData",
     value: function _loadData(mediaFileReader, callbacks) {
@@ -854,7 +726,6 @@ var ID3v1TagReader = /*#__PURE__*/function (_MediaTagReader) {
       var year = data.getStringWithCharsetAt(offset + 93, 4).toString();
       var trackFlag = data.getByteAt(offset + 97 + 28);
       var track = data.getByteAt(offset + 97 + 29);
-
       if (trackFlag == 0 && track != 0) {
         var version = "1.1";
         var comment = data.getStringWithCharsetAt(offset + 97, 28).toString();
@@ -863,15 +734,12 @@ var ID3v1TagReader = /*#__PURE__*/function (_MediaTagReader) {
         var comment = data.getStringWithCharsetAt(offset + 97, 30).toString();
         track = 0;
       }
-
       var genreIdx = data.getByteAt(offset + 97 + 30);
-
       if (genreIdx < 255) {
         var genre = GENRES[genreIdx];
       } else {
         var genre = "";
       }
-
       var tag = {
         "type": "ID3",
         "version": version,
@@ -884,12 +752,10 @@ var ID3v1TagReader = /*#__PURE__*/function (_MediaTagReader) {
           "genre": genre
         }
       };
-
       if (track) {
         // $FlowIssue - flow is not happy with adding properties
         tag.tags.track = track;
       }
-
       return tag;
     }
   }], [{
@@ -910,28 +776,23 @@ var ID3v1TagReader = /*#__PURE__*/function (_MediaTagReader) {
       return id === "TAG";
     }
   }]);
-
   return ID3v1TagReader;
 }(MediaTagReader);
-
 var GENRES = ["Blues", "Classic Rock", "Country", "Dance", "Disco", "Funk", "Grunge", "Hip-Hop", "Jazz", "Metal", "New Age", "Oldies", "Other", "Pop", "R&B", "Rap", "Reggae", "Rock", "Techno", "Industrial", "Alternative", "Ska", "Death Metal", "Pranks", "Soundtrack", "Euro-Techno", "Ambient", "Trip-Hop", "Vocal", "Jazz+Funk", "Fusion", "Trance", "Classical", "Instrumental", "Acid", "House", "Game", "Sound Clip", "Gospel", "Noise", "AlternRock", "Bass", "Soul", "Punk", "Space", "Meditative", "Instrumental Pop", "Instrumental Rock", "Ethnic", "Gothic", "Darkwave", "Techno-Industrial", "Electronic", "Pop-Folk", "Eurodance", "Dream", "Southern Rock", "Comedy", "Cult", "Gangsta", "Top 40", "Christian Rap", "Pop/Funk", "Jungle", "Native American", "Cabaret", "New Wave", "Psychadelic", "Rave", "Showtunes", "Trailer", "Lo-Fi", "Tribal", "Acid Punk", "Acid Jazz", "Polka", "Retro", "Musical", "Rock & Roll", "Hard Rock", "Folk", "Folk-Rock", "National Folk", "Swing", "Fast Fusion", "Bebob", "Latin", "Revival", "Celtic", "Bluegrass", "Avantgarde", "Gothic Rock", "Progressive Rock", "Psychedelic Rock", "Symphonic Rock", "Slow Rock", "Big Band", "Chorus", "Easy Listening", "Acoustic", "Humour", "Speech", "Chanson", "Opera", "Chamber Music", "Sonata", "Symphony", "Booty Bass", "Primus", "Porn Groove", "Satire", "Slow Jam", "Club", "Tango", "Samba", "Folklore", "Ballad", "Power Ballad", "Rhythmic Soul", "Freestyle", "Duet", "Punk Rock", "Drum Solo", "Acapella", "Euro-House", "Dance Hall"];
 module.exports = ID3v1TagReader;
 
 },{"./MediaFileReader":11,"./MediaTagReader":12}],8:[function(require,module,exports){
 'use strict';
 
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 var MediaFileReader = require('./MediaFileReader');
-
 var StringUtils = require('./StringUtils');
-
 var ArrayFileReader = require('./ArrayFileReader');
-
 var FRAME_DESCRIPTIONS = {
   // v2.2
   "BUF": "Recommended buffer size",
@@ -1090,12 +951,10 @@ var FRAME_DESCRIPTIONS = {
   "WPUB": "Publishers official webpage",
   "WXXX": "User defined URL link frame"
 };
-
 var ID3v2FrameReader = /*#__PURE__*/function () {
   function ID3v2FrameReader() {
     _classCallCheck(this, ID3v2FrameReader);
   }
-
   _createClass(ID3v2FrameReader, null, [{
     key: "getFrameReaderFunction",
     value: function getFrameReaderFunction(frameId) {
@@ -1123,92 +982,81 @@ var ID3v2FrameReader = /*#__PURE__*/function () {
      * of ten bytes in every frame. The size is calculated as frame size excluding
      * frame header (frame size - 10).
      */
-
   }, {
     key: "readFrames",
     value: function readFrames(offset, end, data, id3header, tags) {
       var frames = {};
-
-      var frameHeaderSize = this._getFrameHeaderSize(id3header); // console.log('header', id3header);
-
-
-      while ( // we should be able to read at least the frame header
+      var frameHeaderSize = this._getFrameHeaderSize(id3header);
+      // console.log('header', id3header);
+      while (
+      // we should be able to read at least the frame header
       offset < end - frameHeaderSize) {
         var header = this._readFrameHeader(data, offset, id3header);
+        var frameId = header.id;
 
-        var frameId = header.id; // No frame ID sometimes means it's the last frame (GTFO).
-
+        // No frame ID sometimes means it's the last frame (GTFO).
         if (!frameId) {
           break;
         }
-
         var flags = header.flags;
         var frameSize = header.size;
         var frameDataOffset = offset + header.headerSize;
-        var frameData = data; // console.log(offset, frameId, header.size + header.headerSize, flags && flags.format.unsynchronisation);
+        var frameData = data;
+
+        // console.log(offset, frameId, header.size + header.headerSize, flags && flags.format.unsynchronisation);
         // advance data offset to the next frame data
+        offset += header.headerSize + header.size;
 
-        offset += header.headerSize + header.size; // skip unwanted tags
-
+        // skip unwanted tags
         if (tags && tags.indexOf(frameId) === -1) {
           continue;
-        } // Workaround: MP3ext V3.3.17 places a non-compliant padding string at
+        }
+        // Workaround: MP3ext V3.3.17 places a non-compliant padding string at
         // the end of the ID3v2 header. A string like "MP3ext V3.3.19(ansi)"
         // is added multiple times at the end of the ID3 tag. More information
         // about this issue can be found at
         // https://github.com/aadsm/jsmediatags/issues/58#issuecomment-313865336
-
-
         if (frameId === 'MP3e' || frameId === '\x00MP3' || frameId === '\x00\x00MP' || frameId === ' MP3') {
           break;
         }
-
         var unsyncData;
-
         if (flags && flags.format.unsynchronisation && !id3header.flags.unsynchronisation) {
           frameData = this.getUnsyncFileReader(frameData, frameDataOffset, frameSize);
           frameDataOffset = 0;
           frameSize = frameData.getSize();
-        } // the first 4 bytes are the real data size
+        }
+
+        // the first 4 bytes are the real data size
         // (after unsynchronisation && encryption)
-
-
         if (flags && flags.format.data_length_indicator) {
           // var frameDataSize = frameData.getSynchsafeInteger32At(frameDataOffset);
           frameDataOffset += 4;
           frameSize -= 4;
         }
-
         var readFrameFunc = ID3v2FrameReader.getFrameReaderFunction(frameId);
         var parsedData = readFrameFunc ? readFrameFunc.apply(this, [frameDataOffset, frameSize, frameData, flags, id3header]) : null;
-
         var desc = this._getFrameDescription(frameId);
-
         var frame = {
           id: frameId,
           size: frameSize,
           description: desc,
           data: parsedData
         };
-
         if (frameId in frames) {
           if (frames[frameId].id) {
             frames[frameId] = [frames[frameId]];
           }
-
           frames[frameId].push(frame);
         } else {
           frames[frameId] = frame;
         }
       }
-
       return frames;
     }
   }, {
     key: "_getFrameHeaderSize",
     value: function _getFrameHeaderSize(id3header) {
       var major = id3header.major;
-
       if (major == 2) {
         return 6;
       } else if (major == 3 || major == 4) {
@@ -1222,38 +1070,32 @@ var ID3v2FrameReader = /*#__PURE__*/function () {
     value: function _readFrameHeader(data, offset, id3header) {
       var major = id3header.major;
       var flags = null;
-
       var frameHeaderSize = this._getFrameHeaderSize(id3header);
-
       switch (major) {
         case 2:
           var frameId = data.getStringAt(offset, 3);
           var frameSize = data.getInteger24At(offset + 3, true);
           break;
-
         case 3:
           var frameId = data.getStringAt(offset, 4);
           var frameSize = data.getLongAt(offset + 4, true);
           break;
-
         case 4:
           var frameId = data.getStringAt(offset, 4);
           var frameSize = data.getSynchsafeInteger32At(offset + 4);
           break;
       }
-
       if (frameId == String.fromCharCode(0, 0, 0) || frameId == String.fromCharCode(0, 0, 0, 0)) {
         frameId = "";
-      } // if frameId is empty then it's the last frame
+      }
 
-
+      // if frameId is empty then it's the last frame
       if (frameId) {
         // read frame message and format flags
         if (major > 2) {
           flags = this._readFrameFlags(data, offset + 8);
         }
       }
-
       return {
         "id": frameId || "",
         "size": frameSize || 0,
@@ -1292,43 +1134,34 @@ var ID3v2FrameReader = /*#__PURE__*/function () {
     key: "getUnsyncFileReader",
     value: function getUnsyncFileReader(data, offset, size) {
       var frameData = data.getBytesAt(offset, size);
-
       for (var i = 0; i < frameData.length - 1; i++) {
         if (frameData[i] === 0xff && frameData[i + 1] === 0x00) {
           frameData.splice(i + 1, 1);
         }
       }
-
       return new ArrayFileReader(frameData);
     }
   }]);
-
   return ID3v2FrameReader;
 }();
-
 ;
 var frameReaderFunctions = {};
-
 frameReaderFunctions['APIC'] = function readPictureFrame(offset, length, data, flags, id3header) {
   var start = offset;
   var charset = getTextEncoding(data.getByteAt(offset));
-
   switch (id3header && id3header.major) {
     case 2:
       var format = data.getStringAt(offset + 1, 3);
       offset += 4;
       break;
-
     case 3:
     case 4:
       var format = data.getStringWithCharsetAt(offset + 1, length - 1);
       offset += 1 + format.bytesReadCount;
       break;
-
     default:
       throw new Error("Couldn't read ID3v2 major version.");
   }
-
   var bite = data.getByteAt(offset);
   var type = PICTURE_TYPE[bite];
   var desc = data.getStringWithCharsetAt(offset + 1, length - (offset - start) - 1, charset);
@@ -1339,9 +1172,9 @@ frameReaderFunctions['APIC'] = function readPictureFrame(offset, length, data, f
     "description": desc.toString(),
     "data": data.getBytesAt(offset, start + length - offset)
   };
-}; // ID3v2 chapters according to http://id3.org/id3v2-chapters-1.0
+};
 
-
+// ID3v2 chapters according to http://id3.org/id3v2-chapters-1.0
 frameReaderFunctions['CHAP'] = function readChapterFrame(offset, length, data, flags, id3header) {
   var originalOffset = offset;
   var result = {};
@@ -1359,9 +1192,9 @@ frameReaderFunctions['CHAP'] = function readChapterFrame(offset, length, data, f
   var remainingLength = length - (offset - originalOffset);
   result.subFrames = this.readFrames(offset, offset + remainingLength, data, id3header);
   return result;
-}; // ID3v2 table of contents according to http://id3.org/id3v2-chapters-1.0
+};
 
-
+// ID3v2 table of contents according to http://id3.org/id3v2-chapters-1.0
 frameReaderFunctions['CTOC'] = function readTableOfContentsFrame(offset, length, data, flags, id3header) {
   var originalOffset = offset;
   var result = {
@@ -1380,18 +1213,15 @@ frameReaderFunctions['CTOC'] = function readTableOfContentsFrame(offset, length,
   offset++;
   result.entryCount = data.getByteAt(offset);
   offset++;
-
   for (var i = 0; i < result.entryCount; i++) {
     var childId = StringUtils.readNullTerminatedString(data.getBytesAt(offset, length - (offset - originalOffset)));
     result.childElementIds.push(childId.toString());
     offset += childId.bytesReadCount;
   }
-
   var remainingLength = length - (offset - originalOffset);
   result.subFrames = this.readFrames(offset, offset + remainingLength, data, id3header);
   return result;
 };
-
 frameReaderFunctions['COMM'] = function readCommentsFrame(offset, length, data, flags, id3header) {
   var start = offset;
   var charset = getTextEncoding(data.getByteAt(offset));
@@ -1405,54 +1235,41 @@ frameReaderFunctions['COMM'] = function readCommentsFrame(offset, length, data, 
     text: text.toString()
   };
 };
-
 frameReaderFunctions['COM'] = frameReaderFunctions['COMM'];
-
 frameReaderFunctions['PIC'] = function (offset, length, data, flags, id3header) {
   return frameReaderFunctions['APIC'](offset, length, data, flags, id3header);
 };
-
 frameReaderFunctions['PCNT'] = function readCounterFrame(offset, length, data, flags, id3header) {
   // FIXME: implement the rest of the spec
   return data.getLongAt(offset, false);
 };
-
 frameReaderFunctions['CNT'] = frameReaderFunctions['PCNT'];
-
 frameReaderFunctions['T*'] = function readTextFrame(offset, length, data, flags, id3header) {
   var charset = getTextEncoding(data.getByteAt(offset));
   return data.getStringWithCharsetAt(offset + 1, length - 1, charset).toString();
 };
-
 frameReaderFunctions['TXXX'] = function readTextFrame(offset, length, data, flags, id3header) {
   var charset = getTextEncoding(data.getByteAt(offset));
   return getUserDefinedFields(offset, length, data, charset);
 };
-
 frameReaderFunctions['WXXX'] = function readUrlFrame(offset, length, data, flags, id3header) {
   if (length === 0) {
     return null;
   }
-
   var charset = getTextEncoding(data.getByteAt(offset));
   return getUserDefinedFields(offset, length, data, charset);
 };
-
 frameReaderFunctions['W*'] = function readUrlFrame(offset, length, data, flags, id3header) {
   if (length === 0) {
     return null;
   }
-
   return data.getStringWithCharsetAt(offset, length, 'iso-8859-1').toString();
 };
-
 frameReaderFunctions['TCON'] = function readGenreFrame(offset, length, data, flags) {
   var text = frameReaderFunctions['T*'].apply(this, arguments);
   return text.replace(/^\(\d+\)/, '');
 };
-
 frameReaderFunctions['TCO'] = frameReaderFunctions['TCON'];
-
 frameReaderFunctions['USLT'] = function readLyricsFrame(offset, length, data, flags, id3header) {
   var start = offset;
   var charset = getTextEncoding(data.getByteAt(offset));
@@ -1466,9 +1283,7 @@ frameReaderFunctions['USLT'] = function readLyricsFrame(offset, length, data, fl
     lyrics: lyrics.toString()
   };
 };
-
 frameReaderFunctions['ULT'] = frameReaderFunctions['USLT'];
-
 frameReaderFunctions['UFID'] = function readLyricsFrame(offset, length, data, flags, id3header) {
   var ownerIdentifier = StringUtils.readNullTerminatedString(data.getBytesAt(offset, length));
   offset += ownerIdentifier.bytesReadCount;
@@ -1478,36 +1293,29 @@ frameReaderFunctions['UFID'] = function readLyricsFrame(offset, length, data, fl
     identifier: identifier
   };
 };
-
 function getTextEncoding(bite) {
   var charset;
-
   switch (bite) {
     case 0x00:
       charset = 'iso-8859-1';
       break;
-
     case 0x01:
       charset = 'utf-16';
       break;
-
     case 0x02:
       charset = 'utf-16be';
       break;
-
     case 0x03:
       charset = 'utf-8';
       break;
-
     default:
       charset = 'iso-8859-1';
   }
-
   return charset;
-} // Handles reading description/data from either http://id3.org/id3v2.3.0#User_defined_text_information_frame
+}
+
+// Handles reading description/data from either http://id3.org/id3v2.3.0#User_defined_text_information_frame
 // and http://id3.org/id3v2.3.0#User_defined_URL_link_frame
-
-
 function getUserDefinedFields(offset, length, data, charset) {
   var userDesc = data.getStringWithCharsetAt(offset + 1, length - 1, charset);
   var userDefinedData = data.getStringWithCharsetAt(offset + 1 + userDesc.bytesReadCount, length - 1 - userDesc.bytesReadCount, charset);
@@ -1516,60 +1324,43 @@ function getUserDefinedFields(offset, length, data, charset) {
     data: userDefinedData.toString()
   };
 }
-
 var PICTURE_TYPE = ["Other", "32x32 pixels 'file icon' (PNG only)", "Other file icon", "Cover (front)", "Cover (back)", "Leaflet page", "Media (e.g. label side of CD)", "Lead artist/lead performer/soloist", "Artist/performer", "Conductor", "Band/Orchestra", "Composer", "Lyricist/text writer", "Recording Location", "During recording", "During performance", "Movie/video screen capture", "A bright coloured fish", "Illustration", "Band/artist logotype", "Publisher/Studio logotype"];
 module.exports = ID3v2FrameReader;
 
 },{"./ArrayFileReader":3,"./MediaFileReader":11,"./StringUtils":13}],9:[function(require,module,exports){
 'use strict';
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 var MediaTagReader = require('./MediaTagReader');
-
 var MediaFileReader = require('./MediaFileReader');
-
 var ID3v2FrameReader = require('./ID3v2FrameReader');
-
 var ID3_HEADER_SIZE = 10;
-
 var ID3v2TagReader = /*#__PURE__*/function (_MediaTagReader) {
   _inherits(ID3v2TagReader, _MediaTagReader);
-
   var _super = _createSuper(ID3v2TagReader);
-
   function ID3v2TagReader() {
     _classCallCheck(this, ID3v2TagReader);
-
     return _super.apply(this, arguments);
   }
-
   _createClass(ID3v2TagReader, [{
     key: "_loadData",
     value: function _loadData(mediaFileReader, callbacks) {
       mediaFileReader.loadRange([6, 9], {
         onSuccess: function onSuccess() {
-          mediaFileReader.loadRange( // The tag size does not include the header size.
+          mediaFileReader.loadRange(
+          // The tag size does not include the header size.
           [0, ID3_HEADER_SIZE + mediaFileReader.getSynchsafeInteger32At(6) - 1], callbacks);
         },
         onError: callbacks.onError
@@ -1580,7 +1371,6 @@ var ID3v2TagReader = /*#__PURE__*/function (_MediaTagReader) {
     value: function _parseData(data, tags) {
       var offset = 0;
       var major = data.getByteAt(offset + 3);
-
       if (major > 4) {
         return {
           "type": "ID3",
@@ -1588,26 +1378,23 @@ var ID3v2TagReader = /*#__PURE__*/function (_MediaTagReader) {
           "tags": {}
         };
       }
-
       var revision = data.getByteAt(offset + 4);
       var unsynch = data.isBitSetAt(offset + 5, 7);
       var xheader = data.isBitSetAt(offset + 5, 6);
       var xindicator = data.isBitSetAt(offset + 5, 5);
       var size = data.getSynchsafeInteger32At(offset + 6);
       offset += 10;
-
       if (xheader) {
         // We skip the extended header and don't offer support for it right now.
         if (major === 4) {
           var xheadersize = data.getSynchsafeInteger32At(offset);
           offset += xheadersize;
         } else {
-          var xheadersize = data.getLongAt(offset, true); // The 'Extended header size', currently 6 or 10 bytes, excludes itself.
-
+          var xheadersize = data.getLongAt(offset, true);
+          // The 'Extended header size', currently 6 or 10 bytes, excludes itself.
           offset += xheadersize + 4;
         }
       }
-
       var id3 = {
         "type": "ID3",
         "version": '2.' + major + '.' + revision,
@@ -1623,49 +1410,36 @@ var ID3v2TagReader = /*#__PURE__*/function (_MediaTagReader) {
         "size": size,
         "tags": {}
       };
-
       if (tags) {
         var expandedTags = this._expandShortcutTags(tags);
       }
-
-      var offsetEnd = size + 10
-      /*header size*/
-      ; // When this flag is set the entire tag needs to be un-unsynchronised
+      var offsetEnd = size + 10 /*header size*/;
+      // When this flag is set the entire tag needs to be un-unsynchronised
       // before parsing each individual frame. Individual frame sizes might not
       // take unsynchronisation into consideration when it's set on the tag
       // header.
-
       if (id3.flags.unsynchronisation) {
         data = ID3v2FrameReader.getUnsyncFileReader(data, offset, size);
         offset = 0;
         offsetEnd = data.getSize();
       }
-
-      var frames = ID3v2FrameReader.readFrames(offset, offsetEnd, data, id3, expandedTags); // create shortcuts for most common data.
-
-      for (var name in SHORTCUTS) {
-        if (SHORTCUTS.hasOwnProperty(name)) {
-          var frameData = this._getFrameData(frames, SHORTCUTS[name]);
-
-          if (frameData) {
-            id3.tags[name] = frameData;
-          }
+      var frames = ID3v2FrameReader.readFrames(offset, offsetEnd, data, id3, expandedTags);
+      // create shortcuts for most common data.
+      for (var name in SHORTCUTS) if (SHORTCUTS.hasOwnProperty(name)) {
+        var frameData = this._getFrameData(frames, SHORTCUTS[name]);
+        if (frameData) {
+          id3.tags[name] = frameData;
         }
       }
-
-      for (var frame in frames) {
-        if (frames.hasOwnProperty(frame)) {
-          id3.tags[frame] = frames[frame];
-        }
+      for (var frame in frames) if (frames.hasOwnProperty(frame)) {
+        id3.tags[frame] = frames[frame];
       }
-
       return id3;
     }
   }, {
     key: "_getFrameData",
     value: function _getFrameData(frames, ids) {
       var frame;
-
       for (var i = 0, id; id = ids[i]; i++) {
         if (id in frames) {
           if (frames[id] instanceof Array) {
@@ -1673,7 +1447,6 @@ var ID3v2TagReader = /*#__PURE__*/function (_MediaTagReader) {
           } else {
             frame = frames[id];
           }
-
           return frame.data;
         }
       }
@@ -1699,10 +1472,8 @@ var ID3v2TagReader = /*#__PURE__*/function (_MediaTagReader) {
       return id === 'ID3';
     }
   }]);
-
   return ID3v2TagReader;
 }(MediaTagReader);
-
 var SHORTCUTS = {
   "title": ["TIT2", "TT2"],
   "artist": ["TPE1", "TP1"],
@@ -1727,43 +1498,28 @@ module.exports = ID3v2TagReader;
  */
 'use strict';
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 var MediaTagReader = require('./MediaTagReader');
-
 var MediaFileReader = require('./MediaFileReader');
-
 var MP4TagReader = /*#__PURE__*/function (_MediaTagReader) {
   _inherits(MP4TagReader, _MediaTagReader);
-
   var _super = _createSuper(MP4TagReader);
-
   function MP4TagReader() {
     _classCallCheck(this, MP4TagReader);
-
     return _super.apply(this, arguments);
   }
-
   _createClass(MP4TagReader, [{
     key: "_loadData",
     value: function _loadData(mediaFileReader, callbacks) {
@@ -1778,8 +1534,9 @@ var MP4TagReader = /*#__PURE__*/function (_MediaTagReader) {
       // to traverse the entire linked list of atoms and only load the ones
       // associated with metadata.
       // The metadata atoms can be find under the "moov.udta.meta.ilst" hierarchy.
-      var self = this; // Load the header of the first atom
 
+      var self = this;
+      // Load the header of the first atom
       mediaFileReader.loadRange([0, 16], {
         onSuccess: function onSuccess() {
           self._loadAtom(mediaFileReader, 0, "", callbacks);
@@ -1794,21 +1551,18 @@ var MP4TagReader = /*#__PURE__*/function (_MediaTagReader) {
         callbacks.onSuccess();
         return;
       }
-
-      var self = this; // 8 is the size of the atomSize and atomName fields.
+      var self = this;
+      // 8 is the size of the atomSize and atomName fields.
       // When reading the current block we always read 8 more bytes in order
       // to also read the header of the next block.
-
       var atomSize = mediaFileReader.getLongAt(offset, true);
-
       if (atomSize == 0 || isNaN(atomSize)) {
         callbacks.onSuccess();
         return;
       }
-
-      var atomName = mediaFileReader.getStringAt(offset + 4, 4); // console.log(parentAtomFullName, atomName, atomSize);
+      var atomName = mediaFileReader.getStringAt(offset + 4, 4);
+      // console.log(parentAtomFullName, atomName, atomSize);
       // Container atoms (no actual data)
-
       if (this._isContainerAtom(atomName)) {
         if (atomName == "meta") {
           // The "meta" atom breaks convention and is a container with data.
@@ -1816,7 +1570,6 @@ var MP4TagReader = /*#__PURE__*/function (_MediaTagReader) {
         }
 
         var atomFullName = (parentAtomFullName ? parentAtomFullName + "." : "") + atomName;
-
         if (atomFullName === "moov.udta.meta.ilst") {
           mediaFileReader.loadRange([offset, offset + atomSize], callbacks);
         } else {
@@ -1851,24 +1604,19 @@ var MP4TagReader = /*#__PURE__*/function (_MediaTagReader) {
     value: function _parseData(data, tagsToRead) {
       var tags = {};
       tagsToRead = this._expandShortcutTags(tagsToRead);
+      this._readAtom(tags, data, 0, data.getSize(), tagsToRead);
 
-      this._readAtom(tags, data, 0, data.getSize(), tagsToRead); // create shortcuts for most common data.
-
-
-      for (var name in SHORTCUTS) {
-        if (SHORTCUTS.hasOwnProperty(name)) {
-          var tag = tags[SHORTCUTS[name]];
-
-          if (tag) {
-            if (name === "track") {
-              tags[name] = tag.data.track;
-            } else {
-              tags[name] = tag.data;
-            }
+      // create shortcuts for most common data.
+      for (var name in SHORTCUTS) if (SHORTCUTS.hasOwnProperty(name)) {
+        var tag = tags[SHORTCUTS[name]];
+        if (tag) {
+          if (name === "track") {
+            tags[name] = tag.data.track;
+          } else {
+            tags[name] = tag.data;
           }
         }
       }
-
       return {
         "type": "MP4",
         "ftyp": data.getStringAt(8, 4),
@@ -1881,33 +1629,28 @@ var MP4TagReader = /*#__PURE__*/function (_MediaTagReader) {
     value: function _readAtom(tags, data, offset, length, tagsToRead, parentAtomFullName, indent) {
       indent = indent === undefined ? "" : indent + "  ";
       var seek = offset;
-
       while (seek < offset + length) {
         var atomSize = data.getLongAt(seek, true);
-
         if (atomSize == 0) {
           return;
         }
+        var atomName = data.getStringAt(seek + 4, 4);
 
-        var atomName = data.getStringAt(seek + 4, 4); // console.log(seek, parentAtomFullName, atomName, atomSize);
-
+        // console.log(seek, parentAtomFullName, atomName, atomSize);
         if (this._isContainerAtom(atomName)) {
           if (atomName == "meta") {
             seek += 4; // next_item_id (uint32)
           }
 
           var atomFullName = (parentAtomFullName ? parentAtomFullName + "." : "") + atomName;
-
           this._readAtom(tags, data, seek + 8, atomSize - 8, tagsToRead, atomFullName, indent);
-
           return;
-        } // Value atoms
+        }
 
-
+        // Value atoms
         if ((!tagsToRead || tagsToRead.indexOf(atomName) >= 0) && parentAtomFullName === "moov.udta.meta.ilst" && this._canReadAtom(atomName)) {
           tags[atomName] = this._readMetadataAtom(data, seek);
         }
-
         seek += atomSize;
       }
     }
@@ -1924,7 +1667,6 @@ var MP4TagReader = /*#__PURE__*/function (_MediaTagReader) {
       var type = TYPES[klass];
       var atomData;
       var bigEndian = true;
-
       if (atomName == "trkn") {
         atomData = {
           "track": data.getShortAt(offset + METADATA_HEADER + 10, bigEndian),
@@ -1941,21 +1683,19 @@ var MP4TagReader = /*#__PURE__*/function (_MediaTagReader) {
         var atomHeader = METADATA_HEADER + 4 + 4;
         var dataStart = offset + atomHeader;
         var dataLength = atomSize - atomHeader;
-        var atomData; // Workaround for covers being parsed as 'uint8' type despite being an 'covr' atom
+        var atomData;
 
+        // Workaround for covers being parsed as 'uint8' type despite being an 'covr' atom
         if (atomName === 'covr' && type === 'uint8') {
           type = 'jpeg';
         }
-
         switch (type) {
           case "text":
             atomData = data.getStringWithCharsetAt(dataStart, dataLength, "utf-8").toString();
             break;
-
           case "uint8":
             atomData = data.getShortAt(dataStart, false);
             break;
-
           case "int":
           case "uint":
             // Though the QuickTime spec doesn't state it, there are 64-bit values
@@ -1965,11 +1705,10 @@ var MP4TagReader = /*#__PURE__*/function (_MediaTagReader) {
             // only current 64-bit atom handled, it is parsed from its 32-bit
             // low word as an unsigned long.
             //
-            var intReader = type == 'int' ? dataLength == 1 ? data.getSByteAt : dataLength == 2 ? data.getSShortAt : dataLength == 4 ? data.getSLongAt : data.getLongAt : dataLength == 1 ? data.getByteAt : dataLength == 2 ? data.getShortAt : data.getLongAt; // $FlowFixMe - getByteAt doesn't receive a second argument
-
+            var intReader = type == 'int' ? dataLength == 1 ? data.getSByteAt : dataLength == 2 ? data.getSShortAt : dataLength == 4 ? data.getSLongAt : data.getLongAt : dataLength == 1 ? data.getByteAt : dataLength == 2 ? data.getShortAt : data.getLongAt;
+            // $FlowFixMe - getByteAt doesn't receive a second argument
             atomData = intReader.call(data, dataStart + (dataLength == 8 ? 4 : 0), true);
             break;
-
           case "jpeg":
           case "png":
             atomData = {
@@ -1979,7 +1718,6 @@ var MP4TagReader = /*#__PURE__*/function (_MediaTagReader) {
             break;
         }
       }
-
       return {
         id: atomName,
         size: atomSize,
@@ -2010,14 +1748,11 @@ var MP4TagReader = /*#__PURE__*/function (_MediaTagReader) {
       return id === "ftyp";
     }
   }]);
-
   return MP4TagReader;
 }(MediaTagReader);
 /*
  * https://developer.apple.com/library/content/documentation/QuickTime/QTFF/Metadata/Metadata.html#//apple_ref/doc/uid/TP40000939-CH1-SW35
 */
-
-
 var TYPES = {
   "0": "uint8",
   "1": "text",
@@ -2095,32 +1830,26 @@ module.exports = MP4TagReader;
 },{"./MediaFileReader":11,"./MediaTagReader":12}],11:[function(require,module,exports){
 'use strict';
 
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 var StringUtils = require('./StringUtils');
-
 var MediaFileReader = /*#__PURE__*/function () {
   function MediaFileReader(path) {
     _classCallCheck(this, MediaFileReader);
-
     _defineProperty(this, "_isInitialized", void 0);
-
     _defineProperty(this, "_size", void 0);
-
     this._isInitialized = false;
     this._size = 0;
   }
+
   /**
    * Decides if this media file reader is able to read the given file.
    */
-
-
   _createClass(MediaFileReader, [{
     key: "init",
     value:
@@ -2130,7 +1859,6 @@ var MediaFileReader = /*#__PURE__*/function () {
      */
     function init(callbacks) {
       var self = this;
-
       if (this._isInitialized) {
         setTimeout(callbacks.onSuccess, 1);
       } else {
@@ -2148,27 +1876,26 @@ var MediaFileReader = /*#__PURE__*/function () {
     value: function _init(callbacks) {
       throw new Error("Must implement init function");
     }
+
     /**
      * @param range The start and end indexes of the range to load.
      *        Ex: [0, 7] load bytes 0 to 7 inclusive.
      */
-
   }, {
     key: "loadRange",
     value: function loadRange(range, callbacks) {
       throw new Error("Must implement loadRange function");
     }
+
     /**
      * @return The size of the file in bytes.
      */
-
   }, {
     key: "getSize",
     value: function getSize() {
       if (!this._isInitialized) {
         throw new Error("init() must be called first.");
       }
-
       return this._size;
     }
   }, {
@@ -2180,11 +1907,9 @@ var MediaFileReader = /*#__PURE__*/function () {
     key: "getBytesAt",
     value: function getBytesAt(offset, length) {
       var bytes = new Array(length);
-
       for (var i = 0; i < length; i++) {
         bytes[i] = this.getByteAt(offset + i);
       }
-
       return bytes;
     }
   }, {
@@ -2197,7 +1922,6 @@ var MediaFileReader = /*#__PURE__*/function () {
     key: "getSByteAt",
     value: function getSByteAt(offset) {
       var iByte = this.getByteAt(offset);
-
       if (iByte > 127) {
         return iByte - 256;
       } else {
@@ -2208,18 +1932,15 @@ var MediaFileReader = /*#__PURE__*/function () {
     key: "getShortAt",
     value: function getShortAt(offset, isBigEndian) {
       var iShort = isBigEndian ? (this.getByteAt(offset) << 8) + this.getByteAt(offset + 1) : (this.getByteAt(offset + 1) << 8) + this.getByteAt(offset);
-
       if (iShort < 0) {
         iShort += 65536;
       }
-
       return iShort;
     }
   }, {
     key: "getSShortAt",
     value: function getSShortAt(offset, isBigEndian) {
       var iUShort = this.getShortAt(offset, isBigEndian);
-
       if (iUShort > 32767) {
         return iUShort - 65536;
       } else {
@@ -2230,22 +1951,19 @@ var MediaFileReader = /*#__PURE__*/function () {
     key: "getLongAt",
     value: function getLongAt(offset, isBigEndian) {
       var iByte1 = this.getByteAt(offset),
-          iByte2 = this.getByteAt(offset + 1),
-          iByte3 = this.getByteAt(offset + 2),
-          iByte4 = this.getByteAt(offset + 3);
+        iByte2 = this.getByteAt(offset + 1),
+        iByte3 = this.getByteAt(offset + 2),
+        iByte4 = this.getByteAt(offset + 3);
       var iLong = isBigEndian ? (((iByte1 << 8) + iByte2 << 8) + iByte3 << 8) + iByte4 : (((iByte4 << 8) + iByte3 << 8) + iByte2 << 8) + iByte1;
-
       if (iLong < 0) {
         iLong += 4294967296;
       }
-
       return iLong;
     }
   }, {
     key: "getSLongAt",
     value: function getSLongAt(offset, isBigEndian) {
       var iULong = this.getLongAt(offset, isBigEndian);
-
       if (iULong > 2147483647) {
         return iULong - 4294967296;
       } else {
@@ -2256,25 +1974,21 @@ var MediaFileReader = /*#__PURE__*/function () {
     key: "getInteger24At",
     value: function getInteger24At(offset, isBigEndian) {
       var iByte1 = this.getByteAt(offset),
-          iByte2 = this.getByteAt(offset + 1),
-          iByte3 = this.getByteAt(offset + 2);
+        iByte2 = this.getByteAt(offset + 1),
+        iByte3 = this.getByteAt(offset + 2);
       var iInteger = isBigEndian ? ((iByte1 << 8) + iByte2 << 8) + iByte3 : ((iByte3 << 8) + iByte2 << 8) + iByte1;
-
       if (iInteger < 0) {
         iInteger += 16777216;
       }
-
       return iInteger;
     }
   }, {
     key: "getStringAt",
     value: function getStringAt(offset, length) {
       var string = [];
-
       for (var i = offset, j = 0; i < offset + length; i++, j++) {
         string[j] = String.fromCharCode(this.getByteAt(i));
       }
-
       return string.join("");
     }
   }, {
@@ -2282,23 +1996,19 @@ var MediaFileReader = /*#__PURE__*/function () {
     value: function getStringWithCharsetAt(offset, length, charset) {
       var bytes = this.getBytesAt(offset, length);
       var string;
-
       switch ((charset || '').toLowerCase()) {
         case "utf-16":
         case "utf-16le":
         case "utf-16be":
           string = StringUtils.readUTF16String(bytes, charset === "utf-16be");
           break;
-
         case "utf-8":
           string = StringUtils.readUTF8String(bytes);
           break;
-
         default:
           string = StringUtils.readNullTerminatedString(bytes);
           break;
       }
-
       return string;
     }
   }, {
@@ -2306,21 +2016,21 @@ var MediaFileReader = /*#__PURE__*/function () {
     value: function getCharAt(offset) {
       return String.fromCharCode(this.getByteAt(offset));
     }
+
     /**
      * The ID3v2 tag/frame size is encoded with four bytes where the most
      * significant bit (bit 7) is set to zero in every byte, making a total of 28
      * bits. The zeroed bits are ignored, so a 257 bytes long tag is represented
      * as $00 00 02 01.
      */
-
   }, {
     key: "getSynchsafeInteger32At",
     value: function getSynchsafeInteger32At(offset) {
       var size1 = this.getByteAt(offset);
       var size2 = this.getByteAt(offset + 1);
       var size3 = this.getByteAt(offset + 2);
-      var size4 = this.getByteAt(offset + 3); // 0x7f = 0b01111111
-
+      var size4 = this.getByteAt(offset + 3);
+      // 0x7f = 0b01111111
       var size = size4 & 0x7f | (size3 & 0x7f) << 7 | (size2 & 0x7f) << 14 | (size1 & 0x7f) << 21;
       return size;
     }
@@ -2330,43 +2040,35 @@ var MediaFileReader = /*#__PURE__*/function () {
       throw new Error("Must implement canReadFile function");
     }
   }]);
-
   return MediaFileReader;
 }();
-
 module.exports = MediaFileReader;
 
 },{"./StringUtils":13}],12:[function(require,module,exports){
 'use strict';
 
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 var MediaFileReader = require('./MediaFileReader');
-
 var MediaTagReader = /*#__PURE__*/function () {
   function MediaTagReader(mediaFileReader) {
     _classCallCheck(this, MediaTagReader);
-
     _defineProperty(this, "_mediaFileReader", void 0);
-
     _defineProperty(this, "_tags", void 0);
-
     this._mediaFileReader = mediaFileReader;
     this._tags = null;
   }
+
   /**
    * Returns the byte range that needs to be loaded and fed to
    * _canReadTagFormat in order to identify if the file contains tag
    * information that can be read.
    */
-
-
   _createClass(MediaTagReader, [{
     key: "setTagsToRead",
     value: function setTagsToRead(tags) {
@@ -2377,7 +2079,6 @@ var MediaTagReader = /*#__PURE__*/function () {
     key: "read",
     value: function read(callbacks) {
       var self = this;
-
       this._mediaFileReader.init({
         onSuccess: function onSuccess() {
           self._loadData(self._mediaFileReader, {
@@ -2392,9 +2093,9 @@ var MediaTagReader = /*#__PURE__*/function () {
                   });
                   return;
                 }
-              } // TODO: destroy mediaFileReader
+              }
 
-
+              // TODO: destroy mediaFileReader
               callbacks.onSuccess(tags);
             },
             onError: callbacks.onError
@@ -2408,19 +2109,19 @@ var MediaTagReader = /*#__PURE__*/function () {
     value: function getShortcuts() {
       return {};
     }
+
     /**
      * Load the necessary bytes from the media file.
      */
-
   }, {
     key: "_loadData",
     value: function _loadData(mediaFileReader, callbacks) {
       throw new Error("Must implement _loadData function");
     }
+
     /**
      * Parse the loaded data to read the media tags.
      */
-
   }, {
     key: "_parseData",
     value: function _parseData(mediaFileReader, tags) {
@@ -2432,14 +2133,11 @@ var MediaTagReader = /*#__PURE__*/function () {
       if (!tagsWithShortcuts) {
         return null;
       }
-
       var tags = [];
       var shortcuts = this.getShortcuts();
-
       for (var i = 0, tagOrShortcut; tagOrShortcut = tagsWithShortcuts[i]; i++) {
         tags = tags.concat(shortcuts[tagOrShortcut] || [tagOrShortcut]);
       }
-
       return tags;
     }
   }], [{
@@ -2447,67 +2145,56 @@ var MediaTagReader = /*#__PURE__*/function () {
     value: function getTagIdentifierByteRange() {
       throw new Error("Must implement");
     }
+
     /**
      * Given a tag identifier (read from the file byte positions speficied by
      * getTagIdentifierByteRange) this function checks if it can read the tag
      * format or not.
      */
-
   }, {
     key: "canReadTagFormat",
     value: function canReadTagFormat(tagIdentifier) {
       throw new Error("Must implement");
     }
   }]);
-
   return MediaTagReader;
 }();
-
 module.exports = MediaTagReader;
 
 },{"./MediaFileReader":11}],13:[function(require,module,exports){
 'use strict';
 
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 var InternalDecodedString = /*#__PURE__*/function () {
   function InternalDecodedString(value, bytesReadCount) {
     _classCallCheck(this, InternalDecodedString);
-
     _defineProperty(this, "_value", void 0);
-
     _defineProperty(this, "bytesReadCount", void 0);
-
     _defineProperty(this, "length", void 0);
-
     this._value = value;
     this.bytesReadCount = bytesReadCount;
     this.length = value.length;
   }
-
   _createClass(InternalDecodedString, [{
     key: "toString",
     value: function toString() {
       return this._value;
     }
   }]);
-
   return InternalDecodedString;
 }();
-
 var StringUtils = {
   readUTF16String: function readUTF16String(bytes, bigEndian, maxBytes) {
     var ix = 0;
     var offset1 = 1,
-        offset2 = 0;
+      offset2 = 0;
     maxBytes = Math.min(maxBytes || bytes.length, bytes.length);
-
     if (bytes[0] == 0xFE && bytes[1] == 0xFF) {
       bigEndian = true;
       ix = 2;
@@ -2515,20 +2202,16 @@ var StringUtils = {
       bigEndian = false;
       ix = 2;
     }
-
     if (bigEndian) {
       offset1 = 0;
       offset2 = 1;
     }
-
     var arr = [];
-
     for (var j = 0; ix < maxBytes; j++) {
       var byte1 = bytes[ix + offset1];
       var byte2 = bytes[ix + offset2];
       var word1 = (byte1 << 8) + byte2;
       ix += 2;
-
       if (word1 == 0x0000) {
         break;
       } else if (byte1 < 0xD8 || byte1 >= 0xE0) {
@@ -2541,22 +2224,17 @@ var StringUtils = {
         arr[j] = String.fromCharCode(word1, word2);
       }
     }
-
     return new InternalDecodedString(arr.join(""), ix);
   },
   readUTF8String: function readUTF8String(bytes, maxBytes) {
     var ix = 0;
     maxBytes = Math.min(maxBytes || bytes.length, bytes.length);
-
     if (bytes[0] == 0xEF && bytes[1] == 0xBB && bytes[2] == 0xBF) {
       ix = 3;
     }
-
     var arr = [];
-
     for (var j = 0; ix < maxBytes; j++) {
       var byte1 = bytes[ix++];
-
       if (byte1 == 0x00) {
         break;
       } else if (byte1 < 0x80) {
@@ -2576,23 +2254,18 @@ var StringUtils = {
         arr[j] = String.fromCharCode((codepoint >> 10) + 0xD800, (codepoint & 0x3FF) + 0xDC00);
       }
     }
-
     return new InternalDecodedString(arr.join(""), ix);
   },
   readNullTerminatedString: function readNullTerminatedString(bytes, maxBytes) {
     var arr = [];
     maxBytes = maxBytes || bytes.length;
-
     for (var i = 0; i < maxBytes;) {
       var byte1 = bytes[i++];
-
       if (byte1 == 0x00) {
         break;
       }
-
       arr[i - 1] = String.fromCharCode(byte1);
     }
-
     return new InternalDecodedString(arr.join(""), i);
   }
 };
@@ -2601,57 +2274,36 @@ module.exports = StringUtils;
 },{}],14:[function(require,module,exports){
 'use strict';
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 var ChunkedFileData = require('./ChunkedFileData');
-
 var MediaFileReader = require('./MediaFileReader');
-
 var CHUNK_SIZE = 1024;
-
 var XhrFileReader = /*#__PURE__*/function (_MediaFileReader) {
   _inherits(XhrFileReader, _MediaFileReader);
-
   var _super = _createSuper(XhrFileReader);
-
   function XhrFileReader(url) {
     var _this;
-
     _classCallCheck(this, XhrFileReader);
-
     _this = _super.call(this);
-
     _defineProperty(_assertThisInitialized(_this), "_url", void 0);
-
     _defineProperty(_assertThisInitialized(_this), "_fileData", void 0);
-
     _this._url = url;
     _this._fileData = new ChunkedFileData();
     return _this;
   }
-
   _createClass(XhrFileReader, [{
     key: "_init",
     value: function _init(callbacks) {
@@ -2665,11 +2317,9 @@ var XhrFileReader = /*#__PURE__*/function (_MediaFileReader) {
     key: "_fetchSizeWithHeadRequest",
     value: function _fetchSizeWithHeadRequest(callbacks) {
       var self = this;
-
       this._makeXHRRequest("HEAD", null, {
         onSuccess: function onSuccess(xhr) {
           var contentLength = self._parseContentLength(xhr);
-
           if (contentLength) {
             self._size = contentLength;
             callbacks.onSuccess();
@@ -2686,32 +2336,24 @@ var XhrFileReader = /*#__PURE__*/function (_MediaFileReader) {
     key: "_fetchSizeWithGetRequest",
     value: function _fetchSizeWithGetRequest(callbacks) {
       var self = this;
-
       var range = this._roundRangeToChunkMultiple([0, 0]);
-
       this._makeXHRRequest("GET", range, {
         onSuccess: function onSuccess(xhr) {
           var contentRange = self._parseContentRange(xhr);
-
           var data = self._getXhrResponseContent(xhr);
-
           if (contentRange) {
             if (contentRange.instanceLength == null) {
               // Last resort, server is not able to tell us the content length,
               // need to fetch entire file then.
               self._fetchEntireFile(callbacks);
-
               return;
             }
-
             self._size = contentRange.instanceLength;
           } else {
             // Range request not supported, we got the entire file
             self._size = data.length;
           }
-
           self._fileData.addData(0, data);
-
           callbacks.onSuccess();
         },
         onError: callbacks.onError
@@ -2721,15 +2363,11 @@ var XhrFileReader = /*#__PURE__*/function (_MediaFileReader) {
     key: "_fetchEntireFile",
     value: function _fetchEntireFile(callbacks) {
       var self = this;
-
       this._makeXHRRequest("GET", null, {
         onSuccess: function onSuccess(xhr) {
           var data = self._getXhrResponseContent(xhr);
-
           self._size = data.length;
-
           self._fileData.addData(0, data);
-
           callbacks.onSuccess();
         },
         onError: callbacks.onError
@@ -2744,7 +2382,6 @@ var XhrFileReader = /*#__PURE__*/function (_MediaFileReader) {
     key: "_parseContentLength",
     value: function _parseContentLength(xhr) {
       var contentLength = this._getResponseHeader(xhr, "Content-Length");
-
       if (contentLength == null) {
         return contentLength;
       } else {
@@ -2755,14 +2392,11 @@ var XhrFileReader = /*#__PURE__*/function (_MediaFileReader) {
     key: "_parseContentRange",
     value: function _parseContentRange(xhr) {
       var contentRange = this._getResponseHeader(xhr, "Content-Range");
-
       if (contentRange) {
         var parsedContentRange = contentRange.match(/bytes (\d+)-(\d+)\/(?:(\d+)|\*)/i);
-
         if (!parsedContentRange) {
           throw new Error("FIXME: Unknown Content-Range syntax: " + contentRange);
         }
-
         return {
           firstBytePosition: parseInt(parsedContentRange[1], 10),
           lastBytePosition: parseInt(parsedContentRange[2], 10),
@@ -2776,26 +2410,23 @@ var XhrFileReader = /*#__PURE__*/function (_MediaFileReader) {
     key: "loadRange",
     value: function loadRange(range, callbacks) {
       var self = this;
-
       if (self._fileData.hasDataRange(range[0], Math.min(self._size, range[1]))) {
         setTimeout(callbacks.onSuccess, 1);
         return;
-      } // Always download in multiples of CHUNK_SIZE. If we're going to make a
+      }
+
+      // Always download in multiples of CHUNK_SIZE. If we're going to make a
       // request might as well get a chunk that makes sense. The big cost is
       // establishing the connection so getting 10bytes or 1K doesn't really
       // make a difference.
+      range = this._roundRangeToChunkMultiple(range);
 
-
-      range = this._roundRangeToChunkMultiple(range); // Upper range should not be greater than max file size
-
+      // Upper range should not be greater than max file size
       range[1] = Math.min(self._size, range[1]);
-
       this._makeXHRRequest("GET", range, {
         onSuccess: function onSuccess(xhr) {
           var data = self._getXhrResponseContent(xhr);
-
           self._fileData.addData(range[0], data);
-
           callbacks.onSuccess();
         },
         onError: callbacks.onError
@@ -2812,9 +2443,7 @@ var XhrFileReader = /*#__PURE__*/function (_MediaFileReader) {
     key: "_makeXHRRequest",
     value: function _makeXHRRequest(method, range, callbacks) {
       var xhr = this._createXHRObject();
-
       xhr.open(method, this._url);
-
       var onXHRLoad = function onXHRLoad() {
         // 200 - OK
         // 206 - Partial Content
@@ -2828,13 +2457,10 @@ var XhrFileReader = /*#__PURE__*/function (_MediaFileReader) {
             "xhr": xhr
           });
         }
-
         xhr = null;
       };
-
       if (typeof xhr.onload !== 'undefined') {
         xhr.onload = onXHRLoad;
-
         xhr.onerror = function () {
           if (callbacks.onError) {
             callbacks.onError({
@@ -2852,10 +2478,8 @@ var XhrFileReader = /*#__PURE__*/function (_MediaFileReader) {
           }
         };
       }
-
       if (XhrFileReader._config.timeoutInSec) {
         xhr.timeout = XhrFileReader._config.timeoutInSec * 1000;
-
         xhr.ontimeout = function () {
           if (callbacks.onError) {
             callbacks.onError({
@@ -2867,15 +2491,11 @@ var XhrFileReader = /*#__PURE__*/function (_MediaFileReader) {
           }
         };
       }
-
       xhr.overrideMimeType("text/plain; charset=x-user-defined");
-
       if (range) {
         this._setRequestHeader(xhr, "Range", "bytes=" + range[0] + "-" + range[1]);
       }
-
       this._setRequestHeader(xhr, "If-Modified-Since", "Sat, 01 Jan 1970 00:00:00 GMT");
-
       xhr.send(null);
     }
   }, {
@@ -2889,18 +2509,14 @@ var XhrFileReader = /*#__PURE__*/function (_MediaFileReader) {
     key: "_hasResponseHeader",
     value: function _hasResponseHeader(xhr, headerName) {
       var allResponseHeaders = xhr.getAllResponseHeaders();
-
       if (!allResponseHeaders) {
         return false;
       }
-
       var headers = allResponseHeaders.split("\r\n");
       var headerNames = [];
-
       for (var i = 0; i < headers.length; i++) {
         headerNames[i] = headers[i].split(":")[0].toLowerCase();
       }
-
       return headerNames.indexOf(headerName.toLowerCase()) >= 0;
     }
   }, {
@@ -2909,14 +2525,12 @@ var XhrFileReader = /*#__PURE__*/function (_MediaFileReader) {
       if (!this._hasResponseHeader(xhr, headerName)) {
         return null;
       }
-
       return xhr.getResponseHeader(headerName);
     }
   }, {
     key: "getByteAt",
     value: function getByteAt(offset) {
       var character = this._fileData.getByteAt(offset);
-
       return character.charCodeAt(0) & 0xff;
     }
   }, {
@@ -2931,11 +2545,9 @@ var XhrFileReader = /*#__PURE__*/function (_MediaFileReader) {
         // $FlowIssue - flow is not able to recognize this module.
         return new (require("xhr2").XMLHttpRequest)();
       }
-
       if (typeof XMLHttpRequest !== "undefined") {
         return new XMLHttpRequest();
       }
-
       throw new Error("XMLHttpRequest is not supported");
     }
   }], [{
@@ -2946,25 +2558,18 @@ var XhrFileReader = /*#__PURE__*/function (_MediaFileReader) {
   }, {
     key: "setConfig",
     value: function setConfig(config) {
-      for (var key in config) {
-        if (config.hasOwnProperty(key)) {
-          this._config[key] = config[key];
-        }
+      for (var key in config) if (config.hasOwnProperty(key)) {
+        this._config[key] = config[key];
       }
-
       var disallowedXhrHeaders = this._config.disallowedXhrHeaders;
-
       for (var i = 0; i < disallowedXhrHeaders.length; i++) {
         disallowedXhrHeaders[i] = disallowedXhrHeaders[i].toLowerCase();
       }
     }
   }]);
-
   return XhrFileReader;
 }(MediaFileReader);
-
 _defineProperty(XhrFileReader, "_config", void 0);
-
 XhrFileReader._config = {
   avoidHeadRequests: false,
   disallowedXhrHeaders: [],
@@ -2975,60 +2580,41 @@ module.exports = XhrFileReader;
 },{"./ChunkedFileData":5,"./MediaFileReader":11,"xhr2":2}],15:[function(require,module,exports){
 'use strict';
 
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 var MediaFileReader = require("./MediaFileReader");
-
 var XhrFileReader = require("./XhrFileReader");
-
 var BlobFileReader = require("./BlobFileReader");
-
 var ArrayFileReader = require("./ArrayFileReader");
-
 var MediaTagReader = require("./MediaTagReader");
-
 var ID3v1TagReader = require("./ID3v1TagReader");
-
 var ID3v2TagReader = require("./ID3v2TagReader");
-
 var MP4TagReader = require("./MP4TagReader");
-
 var FLACTagReader = require("./FLACTagReader");
-
 var mediaFileReaders = [];
 var mediaTagReaders = [];
-
 function read(location, callbacks) {
   new Reader(location).read(callbacks);
 }
-
 function isRangeValid(range, fileSize) {
   var invalidPositiveRange = range.offset >= 0 && range.offset + range.length >= fileSize;
   var invalidNegativeRange = range.offset < 0 && (-range.offset > fileSize || range.offset + range.length > 0);
   return !(invalidPositiveRange || invalidNegativeRange);
 }
-
 var Reader = /*#__PURE__*/function () {
   function Reader(file) {
     _classCallCheck(this, Reader);
-
     _defineProperty(this, "_file", void 0);
-
     _defineProperty(this, "_tagsToRead", void 0);
-
     _defineProperty(this, "_fileReader", void 0);
-
     _defineProperty(this, "_tagReader", void 0);
-
     this._file = file;
   }
-
   _createClass(Reader, [{
     key: "setTagsToRead",
     value: function setTagsToRead(tagsToRead) {
@@ -3051,7 +2637,6 @@ var Reader = /*#__PURE__*/function () {
     key: "read",
     value: function read(callbacks) {
       var FileReader = this._getFileReader();
-
       var fileReader = new FileReader(this._file);
       var self = this;
       fileReader.init({
@@ -3083,7 +2668,6 @@ var Reader = /*#__PURE__*/function () {
           return mediaFileReaders[i];
         }
       }
-
       throw new Error("No suitable file reader found for " + this._file);
     }
   }, {
@@ -3114,21 +2698,17 @@ var Reader = /*#__PURE__*/function () {
       var tagReadersAtFileStart = [];
       var tagReadersAtFileEnd = [];
       var fileSize = fileReader.getSize();
-
       for (var i = 0; i < mediaTagReaders.length; i++) {
         var range = mediaTagReaders[i].getTagIdentifierByteRange();
-
         if (!isRangeValid(range, fileSize)) {
           continue;
         }
-
         if (range.offset >= 0 && range.offset < fileSize / 2 || range.offset < 0 && range.offset < -fileSize / 2) {
           tagReadersAtFileStart.push(mediaTagReaders[i]);
         } else {
           tagReadersAtFileEnd.push(mediaTagReaders[i]);
         }
       }
-
       var tagsLoaded = false;
       var loadTagIdentifiersCallbacks = {
         onSuccess: function onSuccess() {
@@ -3138,14 +2718,11 @@ var Reader = /*#__PURE__*/function () {
             tagsLoaded = true;
             return;
           }
-
           for (var i = 0; i < mediaTagReaders.length; i++) {
             var range = mediaTagReaders[i].getTagIdentifierByteRange();
-
             if (!isRangeValid(range, fileSize)) {
               continue;
             }
-
             try {
               var tagIndentifier = fileReader.getBytesAt(range.offset >= 0 ? range.offset : range.offset + fileSize, range.length);
             } catch (ex) {
@@ -3155,16 +2732,13 @@ var Reader = /*#__PURE__*/function () {
                   "info": ex.message
                 });
               }
-
               return;
             }
-
             if (mediaTagReaders[i].canReadTagFormat(tagIndentifier)) {
               callbacks.onSuccess(mediaTagReaders[i]);
               return;
             }
           }
-
           if (callbacks.onError) {
             callbacks.onError({
               "type": "tagFormat",
@@ -3174,9 +2748,7 @@ var Reader = /*#__PURE__*/function () {
         },
         onError: callbacks.onError
       };
-
       this._loadTagIdentifierRanges(fileReader, tagReadersAtFileStart, loadTagIdentifiersCallbacks);
-
       this._loadTagIdentifierRanges(fileReader, tagReadersAtFileEnd, loadTagIdentifiersCallbacks);
     }
   }, {
@@ -3187,12 +2759,12 @@ var Reader = /*#__PURE__*/function () {
         setTimeout(callbacks.onSuccess, 1);
         return;
       }
-
       var tagIdentifierRange = [Number.MAX_VALUE, 0];
-      var fileSize = fileReader.getSize(); // Create a super set of all ranges so we can load them all at once.
+      var fileSize = fileReader.getSize();
+
+      // Create a super set of all ranges so we can load them all at once.
       // Might need to rethink this approach if there are tag ranges too far
       // a part from each other. We're good for now though.
-
       for (var i = 0; i < tagReaders.length; i++) {
         var range = tagReaders[i].getTagIdentifierByteRange();
         var start = range.offset >= 0 ? range.offset : range.offset + fileSize;
@@ -3200,19 +2772,15 @@ var Reader = /*#__PURE__*/function () {
         tagIdentifierRange[0] = Math.min(start, tagIdentifierRange[0]);
         tagIdentifierRange[1] = Math.max(end, tagIdentifierRange[1]);
       }
-
       fileReader.loadRange(tagIdentifierRange, callbacks);
     }
   }]);
-
   return Reader;
 }();
-
 var Config = /*#__PURE__*/function () {
   function Config() {
     _classCallCheck(this, Config);
   }
-
   _createClass(Config, null, [{
     key: "addFileReader",
     value: function addFileReader(fileReader) {
@@ -3229,11 +2797,9 @@ var Config = /*#__PURE__*/function () {
     key: "removeTagReader",
     value: function removeTagReader(tagReader) {
       var tagReaderIx = mediaTagReaders.indexOf(tagReader);
-
       if (tagReaderIx >= 0) {
         mediaTagReaders.splice(tagReaderIx, 1);
       }
-
       return Config;
     }
   }, {
@@ -3258,23 +2824,19 @@ var Config = /*#__PURE__*/function () {
       });
     }
   }]);
-
   return Config;
 }();
-
 Config.addFileReader(XhrFileReader).addFileReader(BlobFileReader).addFileReader(ArrayFileReader).addTagReader(ID3v2TagReader).addTagReader(ID3v1TagReader).addTagReader(MP4TagReader).addTagReader(FLACTagReader);
 
-if (typeof process !== "undefined" && !process.browser) {
-  if (typeof navigator !== "undefined" && navigator.product === "ReactNative") {
-    var ReactNativeFileReader = require('./ReactNativeFileReader');
-
-    Config.addFileReader(ReactNativeFileReader);
-  } else {
-    var NodeFileReader = require('./NodeFileReader');
-
-    Config.addFileReader(NodeFileReader);
-  }
-}
+// if (typeof process !== "undefined" && !process.browser) {
+//   if (typeof navigator !== "undefined" && navigator.product === "ReactNative") {
+//     const ReactNativeFileReader = require('./ReactNativeFileReader');
+//     Config.addFileReader(ReactNativeFileReader);
+//   } else {
+var NodeFileReader = require('./NodeFileReader');
+Config.addFileReader(NodeFileReader);
+//   }
+// }
 
 module.exports = {
   "read": read,
@@ -3282,5 +2844,5 @@ module.exports = {
   "Config": Config
 };
 
-},{"./ArrayFileReader":3,"./BlobFileReader":4,"./FLACTagReader":6,"./ID3v1TagReader":7,"./ID3v2TagReader":9,"./MP4TagReader":10,"./MediaFileReader":11,"./MediaTagReader":12,"./NodeFileReader":1,"./ReactNativeFileReader":1,"./XhrFileReader":14}]},{},[15])(15)
+},{"./ArrayFileReader":3,"./BlobFileReader":4,"./FLACTagReader":6,"./ID3v1TagReader":7,"./ID3v2TagReader":9,"./MP4TagReader":10,"./MediaFileReader":11,"./MediaTagReader":12,"./NodeFileReader":1,"./XhrFileReader":14}]},{},[15])(15)
 });
