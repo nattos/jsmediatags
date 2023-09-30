@@ -1327,7 +1327,7 @@ function getUserDefinedFields(offset, length, data, charset) {
 var PICTURE_TYPE = ["Other", "32x32 pixels 'file icon' (PNG only)", "Other file icon", "Cover (front)", "Cover (back)", "Leaflet page", "Media (e.g. label side of CD)", "Lead artist/lead performer/soloist", "Artist/performer", "Conductor", "Band/Orchestra", "Composer", "Lyricist/text writer", "Recording Location", "During recording", "During performance", "Movie/video screen capture", "A bright coloured fish", "Illustration", "Band/artist logotype", "Publisher/Studio logotype"];
 module.exports = ID3v2FrameReader;
 
-},{"./ArrayFileReader":3,"./MediaFileReader":11,"./StringUtils":13}],9:[function(require,module,exports){
+},{"./ArrayFileReader":3,"./MediaFileReader":11,"./StringUtils":14}],9:[function(require,module,exports){
 'use strict';
 
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -2044,7 +2044,7 @@ var MediaFileReader = /*#__PURE__*/function () {
 }();
 module.exports = MediaFileReader;
 
-},{"./StringUtils":13}],12:[function(require,module,exports){
+},{"./StringUtils":14}],12:[function(require,module,exports){
 'use strict';
 
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -2168,6 +2168,121 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+var fs = require('fs');
+var ChunkedFileData = require('./ChunkedFileData');
+var MediaFileReader = require('./MediaFileReader');
+var NodeFileReader = /*#__PURE__*/function (_MediaFileReader) {
+  _inherits(NodeFileReader, _MediaFileReader);
+  var _super = _createSuper(NodeFileReader);
+  function NodeFileReader(path) {
+    var _this;
+    _classCallCheck(this, NodeFileReader);
+    _this = _super.call(this);
+    _defineProperty(_assertThisInitialized(_this), "_path", void 0);
+    _defineProperty(_assertThisInitialized(_this), "_fileData", void 0);
+    _this._path = path;
+    _this._fileData = new ChunkedFileData();
+    return _this;
+  }
+  _createClass(NodeFileReader, [{
+    key: "getByteAt",
+    value: function getByteAt(offset) {
+      return this._fileData.getByteAt(offset);
+    }
+  }, {
+    key: "_init",
+    value: function _init(callbacks) {
+      var self = this;
+      fs.stat(self._path, function (err, stats) {
+        if (err) {
+          if (callbacks.onError) {
+            callbacks.onError({
+              "type": "fs",
+              "info": err
+            });
+          }
+        } else {
+          self._size = stats.size;
+          callbacks.onSuccess();
+        }
+      });
+    }
+  }, {
+    key: "loadRange",
+    value: function loadRange(range, callbacks) {
+      var fd = -1;
+      var self = this;
+      var fileData = this._fileData;
+      var length = range[1] - range[0] + 1;
+      var onSuccess = callbacks.onSuccess;
+      var onError = callbacks.onError || function (object) {};
+      if (fileData.hasDataRange(range[0], range[1])) {
+        process.nextTick(onSuccess);
+        return;
+      }
+      var readData = function readData(err, _fd) {
+        if (err) {
+          onError({
+            "type": "fs",
+            "info": err
+          });
+          return;
+        }
+        fd = _fd;
+        // TODO: Should create a pool of Buffer objects across all instances of
+        //       NodeFileReader. This is fine for now.
+        var buffer = new Buffer(length);
+        fs.read(_fd, buffer, 0, length, range[0], processData);
+      };
+      var processData = function processData(err, bytesRead, buffer) {
+        fs.close(fd, function (err) {
+          if (err) {
+            console.error(err);
+          }
+        });
+        if (err) {
+          onError({
+            "type": "fs",
+            "info": err
+          });
+          return;
+        }
+        storeBuffer(buffer);
+        onSuccess();
+      };
+      var storeBuffer = function storeBuffer(buffer) {
+        var data = Array.prototype.slice.call(buffer, 0, length);
+        fileData.addData(range[0], data);
+      };
+      fs.open(this._path, "r", undefined, readData);
+    }
+  }], [{
+    key: "canReadFile",
+    value: function canReadFile(file) {
+      return typeof file === 'string' && !/^[a-z]+:\/\//i.test(file);
+    }
+  }]);
+  return NodeFileReader;
+}(MediaFileReader);
+module.exports = NodeFileReader;
+
+},{"./ChunkedFileData":5,"./MediaFileReader":11,"fs":1}],14:[function(require,module,exports){
+'use strict';
+
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
@@ -2271,7 +2386,7 @@ var StringUtils = {
 };
 module.exports = StringUtils;
 
-},{}],14:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 'use strict';
 
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -2577,7 +2692,7 @@ XhrFileReader._config = {
 };
 module.exports = XhrFileReader;
 
-},{"./ChunkedFileData":5,"./MediaFileReader":11,"xhr2":2}],15:[function(require,module,exports){
+},{"./ChunkedFileData":5,"./MediaFileReader":11,"xhr2":2}],16:[function(require,module,exports){
 'use strict';
 
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -2844,5 +2959,5 @@ module.exports = {
   "Config": Config
 };
 
-},{"./ArrayFileReader":3,"./BlobFileReader":4,"./FLACTagReader":6,"./ID3v1TagReader":7,"./ID3v2TagReader":9,"./MP4TagReader":10,"./MediaFileReader":11,"./MediaTagReader":12,"./NodeFileReader":1,"./XhrFileReader":14}]},{},[15])(15)
+},{"./ArrayFileReader":3,"./BlobFileReader":4,"./FLACTagReader":6,"./ID3v1TagReader":7,"./ID3v2TagReader":9,"./MP4TagReader":10,"./MediaFileReader":11,"./MediaTagReader":12,"./NodeFileReader":13,"./XhrFileReader":15}]},{},[16])(16)
 });
